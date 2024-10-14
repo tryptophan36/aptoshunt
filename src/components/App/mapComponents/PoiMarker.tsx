@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Label } from "../../ui/label";
 import { Input } from "../../ui/input";
 import { Aptos,Network,AptosConfig, InputViewFunctionData } from "@aptos-labs/ts-sdk";
-import { InputTransactionData, Types, useWallet } from "@aptos-labs/wallet-adapter-react";
+import { InputTransactionData,  useWallet } from "@aptos-labs/wallet-adapter-react";
 
 // Custom icon setup for markers (Pin equivalent)
 const customMarkerIcon = {

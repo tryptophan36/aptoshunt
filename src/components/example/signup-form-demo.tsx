@@ -21,7 +21,7 @@ export default function SignupFormDemo({locations}:{locations:Poi[]}) {
       const longitude=locations[0].location.lng;
       const contractLattitude=Math.round(lattitude*1000)
       const contractLongitude=Math.round(longitude*1000)
-      const dropToken = async ( totalAmount:number|undefined, claimsAllowed:number|undefined, latitude:number, longitude:number) => {
+      const dropToken = async ( totalAmount:number|undefined, claimsAllowed:number|undefined, lattitude:number, longitude:number) => {
         const transaction:InputTransactionData = {
           data:{
             function: '0x7d596052c4ac93a0d3ed076be21f61bba656d624fcbc5eea1d25941030f50a4f::treasure_token::drop_token', // Update with actual module address
