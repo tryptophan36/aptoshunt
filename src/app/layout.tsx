@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { WrongNetworkAlert } from "@/components/WrongNetworkAlert";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,11 +18,14 @@ export default function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html className="dark" lang="en">
+      <body >
+      
         <WalletProvider>
           <ReactQueryProvider>
-            <div id="root " className="bg-black text-white">{children}</div>
+            <div id="root " className="bg-black text-white">
+              {children}
+              </div>
             <WrongNetworkAlert />
             <Toaster />
           </ReactQueryProvider>
