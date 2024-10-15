@@ -4,8 +4,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { WrongNetworkAlert } from "@/components/WrongNetworkAlert";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-
+import { ToastContainer} from 'react-toastify';
 import "./globals.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: "NextJS Boilerplate Template",
@@ -28,6 +29,7 @@ export default function RootLayout({
               </div>
             <WrongNetworkAlert />
             <Toaster />
+            <ToastContainer/>
           </ReactQueryProvider>
         </WalletProvider>
       </body>

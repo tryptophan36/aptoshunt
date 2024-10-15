@@ -104,7 +104,10 @@ const page = () => {
       <div className="mb-4 w-full mt-5 flex justify-center  ">
 
         {/* Button to center map on the user's location */}
-        <button onClick={centerMapOnLocation} className="px-4 mx-auto py-2 bg-blue-500 text-white rounded">
+        <button
+          onClick={centerMapOnLocation}
+          className="shadow-[0_0_0_3px_#000000_inset] px-6 py-2 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400"
+        >
           Center on My Location
         </button>
       </div>

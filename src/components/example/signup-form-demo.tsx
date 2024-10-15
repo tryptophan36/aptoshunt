@@ -7,6 +7,7 @@ import { Aptos, Network, AptosConfig } from "@aptos-labs/ts-sdk";
 import { InputTransactionData, useWallet } from "@aptos-labs/wallet-adapter-react";
 import { saveTreasureLocation } from "@/lib/firebase";
 import { Poi } from "@/utils/mapPointers";
+import { toast } from "react-toastify";
 export default function SignupFormDemo({ locations }: { locations: Poi[] }) {
   const [dropAmount, setDropAmount] = useState<number | undefined>();
   const [claimsAllowed, setClaimsAllowed] = useState<number | undefined>();
@@ -15,7 +16,12 @@ export default function SignupFormDemo({ locations }: { locations: Poi[] }) {
   const aptos = new Aptos(aptosConfig);
 
   const dropAptosToken = async () => {
-    if (!account || locations.length == 0) return;
+    if (!account || locations.length == 0) 
+      {
+        
+        return
+
+      }
     else {
       const lattitude = locations[0].location.lat;
       const longitude = locations[0].location.lng;
@@ -41,12 +47,16 @@ export default function SignupFormDemo({ locations }: { locations: Poi[] }) {
         if (txnResponse) {
           saveTreasureLocation(lattitude, longitude, account.address).then((response) => {
             console.log(response, "-------------------------------->");
+            toast.success("Token Successfully Dropped",{
+              position: "top-right",
+    autoClose: 5000,
+            })
           });
         }
         console.log(txnResponse, "------>");
         // return txnResponse;
       };
-      dropToken(dropAmount, claimsAllowed, lattitude, longitude);
+      dropToken(((dropAmount||1)*(10**8)), claimsAllowed, lattitude, longitude);
     }
   };
 
@@ -78,8 +88,7 @@ export default function SignupFormDemo({ locations }: { locations: Poi[] }) {
               setDropAmount(Number(e.target.value));
             }}
             id="amount"
-            placeholder=""
-            type="number"
+            placeholder=" 1 Apt"
           />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
@@ -90,7 +99,6 @@ export default function SignupFormDemo({ locations }: { locations: Poi[] }) {
             }}
             id="password"
             placeholder=""
-            type="number"
           />
         </LabelInputContainer>
 

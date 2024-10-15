@@ -6,7 +6,7 @@ import { Label } from "../../ui/label";
 import { Input } from "../../ui/input";
 import { Aptos,Network,AptosConfig, InputViewFunctionData } from "@aptos-labs/ts-sdk";
 import { InputTransactionData,  useWallet } from "@aptos-labs/wallet-adapter-react";
-
+import { ToastContainer, toast } from 'react-toastify';
 // Custom icon setup for markers (Pin equivalent)
 const customMarkerIcon = {
   path: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z",
@@ -70,6 +70,7 @@ export const PoiMarkers = (props: { pois: Poi[],currentLocation:any }) => {
       {
         console.log(distance)
         setEligible(true)
+        
       }else{
         setEligible(false)
       } // Eligible if distance is less than or equal to 150 meters
@@ -107,6 +108,12 @@ export const PoiMarkers = (props: { pois: Poi[],currentLocation:any }) => {
 
         const response = await signAndSubmitTransaction(transaction);
         const txnResponse=await aptos.waitForTransaction({transactionHash:response.hash});
+        if(txnResponse.success){
+          toast.success("Token Successfully Claimed",{
+            position: "top-right",
+  autoClose: 5000,
+          })
+        }
         console.log(txnResponse,"------>") 
       };
       claimToken(contractLattitude,contractLongitude)
@@ -202,7 +209,7 @@ export const PoiMarkers = (props: { pois: Poi[],currentLocation:any }) => {
                className="mt-1 placeholder:text-gray-300"
                id="firstname"
                disabled
-               placeholder={`${amount || "Fetching..."}`}
+               placeholder={`${(amount*(10**-8))|| "Fetching..."} Apt`}
                type="text"
              />
            </div>
@@ -238,9 +245,11 @@ export const PoiMarkers = (props: { pois: Poi[],currentLocation:any }) => {
            </button>
          </div>
        </div>
+       
      </div>
      
       )}
+      
         </>
       )
     )
