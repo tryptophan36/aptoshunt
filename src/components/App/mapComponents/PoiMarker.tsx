@@ -160,52 +160,86 @@ export const PoiMarkers = (props: { pois: Poi[],currentLocation:any }) => {
           icon={customMarkerIcon} // Use the custom marker icon here
         />
         {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-black flex flex-col gap-y-3 rounded-lg shadow-lg max-w-md w-full p-6">
-            <h2 className="text-xl font-semibold mb-4">Claim Your Treasure</h2>
-            <div>
-            <Label htmlFor="firstname">Eligiblility</Label>
-            <Input className="mt-1" id="firstname" disabled placeholder={`${eligible?"Claim Your Treasure":"Please move closer"}`} type="text" />
-          </div>
-          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <div>
-            <Label htmlFor="firstname">Lattitude</Label>
-            <Input className="mt-1 text-white" id="firstname" disabled placeholder={`${poi.location.lat}`} type="text" />
-          </div>
-          <div>
-            <Label htmlFor="lastname">Longitude</Label>
-            <Input className="mt-1" id="lastname" disabled placeholder={`${poi.location.lng}`} type="text" />
-          </div>
-        </div>
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <div>
-            <Label htmlFor="firstname">Amount</Label>
-            <Input className="mt-1" id="firstname" disabled placeholder={`${amount||"Fetching..."}`} type="text" />
-          </div>
-          <div>
-            <Label htmlFor="lastname">Claims Left</Label>
-            <Input className="mt-1" id="lastname" disabled placeholder={`${claimsLeft||"Fetching..."}`} type="text" />
-          </div>
-        </div>
-            <div className="flex gap-3">
-            <button
-              onClick={closeModal}
-              className="bg-sky-500 hover:bg-sky-700 px-4 py-2 rounded-md "
-            >
-              Close
-            </button>
-
-            <button
-            
-              onClick={()=>{claimAptosToken(poi)}}
-              disabled={!eligible}
-              className={`${eligible?'bg-sky-500 hover:bg-sky-700':'bg-blue-500 opacity-50 cursor-not-allowed'} px-4 py-2 rounded-md `}
-            >
-              Claim
-            </button>
-            </div>
-          </div>
-        </div>
+       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+       <div className="bg-black flex flex-col gap-y-3 rounded-lg shadow-lg max-w-md w-full p-6">
+         <h2 className="text-xl font-semibold mb-4">Claim Your Treasure</h2>
+         <div>
+           <Label htmlFor="firstname">Eligibility</Label>
+           <Input
+             className="mt-1 placeholder:text-yellow-400"
+             id="firstname"
+             disabled
+             placeholder={`${eligible ? "Claim Your Treasure" : "Please move closer"}`}
+             type="text"
+           />
+         </div>
+         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+           <div>
+             <Label htmlFor="firstname">Latitude</Label>
+             <Input
+               className="mt-1 text-white placeholder:text-gray-300"
+               id="firstname"
+               disabled
+               placeholder={`${poi.location.lat}`}
+               type="text"
+             />
+           </div>
+           <div>
+             <Label htmlFor="lastname">Longitude</Label>
+             <Input
+               className="mt-1 placeholder:text-gray-300"
+               id="lastname"
+               disabled
+               placeholder={`${poi.location.lng}`}
+               type="text"
+             />
+           </div>
+         </div>
+         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+           <div>
+             <Label htmlFor="firstname">Amount</Label>
+             <Input
+               className="mt-1 placeholder:text-gray-300"
+               id="firstname"
+               disabled
+               placeholder={`${amount || "Fetching..."}`}
+               type="text"
+             />
+           </div>
+           <div>
+             <Label htmlFor="lastname">Claims Left</Label>
+             <Input
+               className="mt-1 placeholder:text-gray-300"
+               id="lastname"
+               disabled
+               placeholder={`${claimsLeft || "Fetching..."}`}
+               type="text"
+             />
+           </div>
+         </div>
+         <div className="flex gap-3">
+           <button
+             onClick={closeModal}
+             className="bg-sky-500 hover:bg-sky-700 px-4 py-2 rounded-md "
+           >
+             Close
+           </button>
+     
+           <button
+             onClick={() => claimAptosToken(poi)}
+             disabled={!eligible}
+             className={`${
+               eligible
+                 ? "bg-sky-500 hover:bg-sky-700"
+                 : "bg-blue-500 opacity-50 cursor-not-allowed"
+             } px-4 py-2 rounded-md`}
+           >
+             Claim
+           </button>
+         </div>
+       </div>
+     </div>
+     
       )}
         </>
       )

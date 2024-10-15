@@ -1,8 +1,8 @@
 // File: D:\vs code\Aptos-Hack\apthunt\src\app\home\page.jsx
-import * as entry from '../../../../src/app/home/page.js'
+import * as entry from '../../../../src/app/dropTreasure/page.jsx'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../src/app/home/page.js')
+type TEntry = typeof import('../../../../src/app/dropTreasure/page.jsx')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
