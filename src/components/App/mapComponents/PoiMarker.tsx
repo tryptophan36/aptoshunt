@@ -121,7 +121,7 @@ export const PoiMarkers = (props: { pois: Poi[],currentLocation:any }) => {
   };
 
   const viewDropInfo = async ( lattitude:number, longitude:number) => {
-    
+    console.log(lattitude,longitude)
     const contractLattitude=Math.round(lattitude*1000)
       const contractLongitude=Math.round(longitude*1000)
     if (!account) return [];
@@ -141,7 +141,7 @@ export const PoiMarkers = (props: { pois: Poi[],currentLocation:any }) => {
         payload: payload
         
       });
-      console.log(response.at(0))
+      console.log(response.at(0),contractLattitude,contractLongitude);
       if(response){
         setClaimsLeft(response.at(0))
         setAmount(response.at(1))

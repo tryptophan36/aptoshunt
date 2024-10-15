@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { AuroraBackground } from "../ui/aurora-background";
-
+import GlobeDemo from "./globe-demo";
 export function AuroraBackgroundDemo() {
   return (
-    (<AuroraBackground>
+    <AuroraBackground>
       <motion.div
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -15,20 +15,18 @@ export function AuroraBackgroundDemo() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4">
+        className="relative flex flex-col gap-4 items-center justify-center px-4"
+      >
         <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
-        Hidden treasures, everywhere you go.
+          Hidden treasures, everywhere you go.
         </div>
-        <div
-          className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
-          And this, is the ultimate hunt.
+        <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
+          The ultimate hunt.
         </div>
-        <button
-        
-          className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
+        <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
           <a href="/hunt">Hunt now</a>
         </button>
       </motion.div>
-    </AuroraBackground>)
+    </AuroraBackground>
   );
 }

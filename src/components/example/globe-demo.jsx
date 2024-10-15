@@ -396,7 +396,7 @@ export default function GlobeDemo() {
 
   return (
     (<div
-      className="flex flex-row items-center justify-center py-20  md:h-auto bg-[black] relative w-full">
+      className="flex flex-row items-center justify-center py-20  md:h-auto  sm:relative w-full">
       <div
         className="max-w-7xl mx-auto w-[20rem] md:w-[40rem] absolute md:left-0 -bottom-60 h-[20rem] md:h-[40rem] px-4">
         <motion.div
